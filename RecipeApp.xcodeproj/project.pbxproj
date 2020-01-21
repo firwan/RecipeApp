@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		51668E0623D746B4007672CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51668E0523D746B4007672CA /* AppDelegate.swift */; };
-		51668E0823D746B4007672CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51668E0723D746B4007672CA /* ViewController.swift */; };
+		51668E0823D746B4007672CA /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51668E0723D746B4007672CA /* RecipeViewController.swift */; };
 		51668E0B23D746B4007672CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51668E0923D746B4007672CA /* Main.storyboard */; };
 		51668E0E23D746B4007672CA /* RecipeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51668E0C23D746B4007672CA /* RecipeApp.xcdatamodeld */; };
 		51668E1023D746B5007672CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51668E0F23D746B5007672CA /* Assets.xcassets */; };
 		51668E1323D746B5007672CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51668E1123D746B5007672CA /* LaunchScreen.storyboard */; };
+		51668E1F23D762DF007672CA /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51668E1D23D762DF007672CA /* CustomCellTableViewCell.swift */; };
+		51668E2023D762DF007672CA /* CustomCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51668E1E23D762DF007672CA /* CustomCellTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		51668E0223D746B4007672CA /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51668E0523D746B4007672CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		51668E0723D746B4007672CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		51668E0723D746B4007672CA /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		51668E0A23D746B4007672CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51668E0D23D746B4007672CA /* RecipeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeApp.xcdatamodel; sourceTree = "<group>"; };
 		51668E0F23D746B5007672CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51668E1223D746B5007672CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51668E1423D746B5007672CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51668E1D23D762DF007672CA /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		51668E1E23D762DF007672CA /* CustomCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		51668E0423D746B4007672CA /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				51668E1B23D7473D007672CA /* Controllers */,
+				51668E1A23D7470C007672CA /* Data Model */,
+				51668E1C23D74773007672CA /* Views */,
 				51668E0523D746B4007672CA /* AppDelegate.swift */,
-				51668E0723D746B4007672CA /* ViewController.swift */,
-				51668E0923D746B4007672CA /* Main.storyboard */,
 				51668E0F23D746B5007672CA /* Assets.xcassets */,
-				51668E1123D746B5007672CA /* LaunchScreen.storyboard */,
 				51668E1423D746B5007672CA /* Info.plist */,
 				51668E0C23D746B4007672CA /* RecipeApp.xcdatamodeld */,
 			);
 			path = RecipeApp;
+			sourceTree = "<group>";
+		};
+		51668E1A23D7470C007672CA /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		51668E1B23D7473D007672CA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				51668E0723D746B4007672CA /* RecipeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		51668E1C23D74773007672CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51668E0923D746B4007672CA /* Main.storyboard */,
+				51668E1123D746B5007672CA /* LaunchScreen.storyboard */,
+				51668E2123D76F6B007672CA /* CustomCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		51668E2123D76F6B007672CA /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				51668E1D23D762DF007672CA /* CustomCellTableViewCell.swift */,
+				51668E1E23D762DF007672CA /* CustomCellTableViewCell.xib */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +165,7 @@
 			files = (
 				51668E1323D746B5007672CA /* LaunchScreen.storyboard in Resources */,
 				51668E1023D746B5007672CA /* Assets.xcassets in Resources */,
+				51668E2023D762DF007672CA /* CustomCellTableViewCell.xib in Resources */,
 				51668E0B23D746B4007672CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +178,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				51668E0E23D746B4007672CA /* RecipeApp.xcdatamodeld in Sources */,
-				51668E0823D746B4007672CA /* ViewController.swift in Sources */,
+				51668E0823D746B4007672CA /* RecipeViewController.swift in Sources */,
+				51668E1F23D762DF007672CA /* CustomCellTableViewCell.swift in Sources */,
 				51668E0623D746B4007672CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
