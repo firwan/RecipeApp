@@ -11,7 +11,7 @@ import UIKit
 class RecipeViewController: UITableViewController {
 
     @IBOutlet var recipeTableView: UITableView!
-    
+    let itemArray = ["cake", "mee", "mushroom soup"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +19,17 @@ class RecipeViewController: UITableViewController {
         recipeTableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCustomCell")
     }
 
-    //MARK - Tableview Datasource Methods
+    //MARK : Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return itemArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCustomCell", for: indexPath) as! CustomCellTableViewCell
         
+        cell.recipeTitle.text = itemArray[indexPath.row]
+        return cell
     }
 
 }
