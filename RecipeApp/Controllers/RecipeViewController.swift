@@ -12,10 +12,14 @@ import CoreData
 class RecipeViewController: UITableViewController {
 
     @IBOutlet var recipeTableView: UITableView!
+//    @IBOutlet weak var recipeTitle: UILabel!
+//    @IBOutlet weak var recipeImage: UIImageView!
+//    @IBOutlet weak var recipeIngredients: UILabel!
+//    @IBOutlet weak var recipeMethods: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    var itemArray = ["cake", "mee", "mushroom soup"]
+    var itemArray = [Recipe]()
     
     //MARK - Method add new recipe
     @IBAction func addNewRecipe(_ sender: UIBarButtonItem) {
@@ -26,9 +30,12 @@ class RecipeViewController: UITableViewController {
         let action = UIAlertAction(title: "Add recipe", style: .default) { (action) in
             
             let newRecipe = Recipe(context: self.context)
+            newRecipe.title = textField.text!
             
-            self.itemArray.append(textField.text!)
+            self.itemArray.append(newRecipe)
             self.tableView.reloadData()
+            
+            self.saveRecipe()
         }
         
         alert.addTextField { (alertTextField) in
@@ -38,6 +45,7 @@ class RecipeViewController: UITableViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+
     }
     
     
@@ -46,9 +54,9 @@ class RecipeViewController: UITableViewController {
 
         //MARK - check path for table
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        recipeTableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCustomCell")
+       // recipeTableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCustomCell")
         
-        
+        loadRecipe()
     }
 
     //MARK : Tableview Datasource Methods
@@ -58,9 +66,12 @@ class RecipeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCustomCell", for: indexPath) as! CustomCellTableViewCell
+       let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeListCell", for: indexPath)
         
-        cell.recipeTitle.text = itemArray[indexPath.row]
+        let recipe =  itemArray[indexPath.row]
+       //cell.recipeTitle.text? = recipe.title
+        cell.textLabel?.text = recipe.title
+        
         return cell
     }
     
@@ -76,5 +87,14 @@ class RecipeViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
+    func loadRecipe() {
+        let request : NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+            print("This is the --> \(itemArray)")
+        } catch {
+            print("Error fetch data : \(error)")
+        }
+    }
 }
 

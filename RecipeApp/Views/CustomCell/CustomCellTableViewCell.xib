@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-Nn-cTT">
-                        <rect key="frame" x="0.0" y="11" width="383" height="30"/>
+                        <rect key="frame" x="0.0" y="11" width="383" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.99942404029999998" green="0.97614452986143563" blue="0.62485817169633606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="23"/>
@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9v-tG-iwe">
-                        <rect key="frame" x="0.0" y="49" width="383" height="177"/>
+                        <rect key="frame" x="0.0" y="47" width="383" height="177"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6De-XS-PM8">
@@ -72,12 +72,6 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="recipeImage" destination="B9v-tG-iwe" id="hs1-J8-8zL"/>
-                <outlet property="recipeIngredients" destination="E8i-G1-e57" id="LbB-98-SGv"/>
-                <outlet property="recipeMethods" destination="6De-XS-PM8" id="Iku-pk-iiQ"/>
-                <outlet property="recipeTitle" destination="TIE-Nn-cTT" id="S8M-gR-ccx"/>
-            </connections>
             <point key="canvasLocation" x="296.80000000000001" y="121.88905547226388"/>
         </tableViewCell>
     </objects>
