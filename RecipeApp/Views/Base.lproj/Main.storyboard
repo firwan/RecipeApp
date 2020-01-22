@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="vXZ-EP-xZV" id="cuF-Se-ddW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recipe App" id="jMy-qO-0Bj"/>
+                    <navigationItem key="navigationItem" title="Recipe App" id="jMy-qO-0Bj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mnV-zc-Tty">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="addNewRecipe:" destination="vXZ-EP-xZV" id="p1t-Md-Uqh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="recipeTableView" destination="9yM-6i-R6M" id="LcO-op-G08"/>
                     </connections>
