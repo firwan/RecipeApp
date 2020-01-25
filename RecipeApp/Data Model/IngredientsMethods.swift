@@ -9,7 +9,9 @@
 import Foundation
 import RealmSwift
 
-class Ingredients: Object {
+class IngredientsMethods: Object {
     @objc dynamic var ingredients : String = ""
-    var parentRecipe = LinkingObjects(fromType: Recipe.self, property: "linkIngredients")
+    @objc dynamic var method : String = ""
+    @objc dynamic var flag : String = ""
+    var parentRecipe = LinkingObjects(fromType: Recipe.self, property: "linkIngredientsMethods")
 }

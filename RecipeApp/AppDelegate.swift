@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(Realm.Configuration.defaultConfiguration.fileURL as Any)
         
         do {
-            let realm = try Realm()
+            _ = try Realm()
         }catch{
             print("Error configurating Realm : \(error)")
         }

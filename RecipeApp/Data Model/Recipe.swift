@@ -12,6 +12,5 @@ import RealmSwift
 class Recipe :Object {
     @objc dynamic var title : String = ""
     @objc dynamic var image : String = ""
-    let linkIngredients = List<Ingredients>()
-    let linkMethods = List<Methods>()
+    let linkIngredientsMethods = List<IngredientsMethods>()
 }

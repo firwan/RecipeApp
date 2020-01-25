@@ -32,7 +32,18 @@
                             <outlet property="delegate" destination="MMi-jp-4Pd" id="hMn-xJ-F29"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="➕ Ingredients" id="brl-SE-HTg">
+                            <connections>
+                                <action selector="buttonPressAddIngredients:" destination="MMi-jp-4Pd" id="4GU-cG-RVG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="➕ Methods" id="H9E-h0-20D">
+                            <connections>
+                                <action selector="buttonPressAddMethods:" destination="MMi-jp-4Pd" id="2Ej-T4-G76"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="How to make it" id="LXA-Lh-qz9">
                         <barButtonItem key="backBarButtonItem" title="Recipe" id="a6O-po-zGd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mQd-WO-vKf">
