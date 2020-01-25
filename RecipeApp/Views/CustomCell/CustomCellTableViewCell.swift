@@ -24,29 +24,29 @@ class CustomCellTableViewCell: UITableViewCell {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    @IBAction func butonPressAddIngredients(_ sender: UIButton) {
-        var textField = UITextField()
-        
-        let alert = UIAlertController(title: "Add the ingredients", message: "", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Done", style: .default) { (UIAlertAction) in
-            let textIngredients = Recipe(context: self.context)
-            textIngredients.ingredients = textField.text!
-            
-            self.itemArray.append(textIngredients)
-            self.saveContext.tableView.reloadData()
-            
-            self.saveContext.saveRecipe()
-        }
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Place Ingredients here"
-            textField = alertTextField
-        }
-        
-        alert.addAction(action)
-        saveContext.present(alert, animated: true, completion: nil)
-    }
+//    @IBAction func butonPressAddIngredients(_ sender: UIButton) {
+//        var textField = UITextField()
+//        
+//        let alert = UIAlertController(title: "Add the ingredients", message: "", preferredStyle: .alert)
+//        
+//        let action = UIAlertAction(title: "Done", style: .default) { (UIAlertAction) in
+//            let textIngredients = Recipe(context: self.context)
+//            textIngredients.ingredients = textField.text!
+//            
+//            self.recipeList.append(textIngredients)
+//            self.saveContext.tableView.reloadData()
+//            
+//            self.saveContext.saveRecipe()
+//        }
+//        
+//        alert.addTextField { (alertTextField) in
+//            alertTextField.placeholder = "Place Ingredients here"
+//            textField = alertTextField
+//        }
+//        
+//        alert.addAction(action)
+//        saveContext.present(alert, animated: true, completion: nil)
+//    }
     
     
     @IBAction func buttonPressAddMethods(_ sender: UIButton) {

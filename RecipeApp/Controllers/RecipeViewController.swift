@@ -7,94 +7,99 @@
 //
 
 import UIKit
+import RealmSwift
 import CoreData
 
 class RecipeViewController: UITableViewController {
+    
+    let realm = try! Realm()
 
     @IBOutlet var recipeTableView: UITableView!
-//    @IBOutlet weak var recipeTitle: UILabel!
-//    @IBOutlet weak var recipeImage: UIImageView!
-//    @IBOutlet weak var recipeIngredients: UILabel!
-//    @IBOutlet weak var recipeMethods: UILabel!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-    var itemArray = [Recipe]()
+    var recipeList: Results<Recipe>?
     
-    //MARK - Method add new recipe
+    //MARK ========= Method add new recipe =========
     @IBAction func addNewRecipe(_ sender: UIBarButtonItem) {
-        var textField = UITextField()
+        var textFieldTitle = UITextField()
         
         let alert = UIAlertController(title: "Add new recipe", message: "", preferredStyle: .alert)
-        
         let action = UIAlertAction(title: "Add recipe", style: .default) { (action) in
-            
-            let newRecipe = Recipe(context: self.context)
-            newRecipe.title = textField.text!
-            
-            self.itemArray.append(newRecipe)
-            self.tableView.reloadData()
-            
-            self.saveRecipe()
+                
+            let addRecipe = Recipe()
+            addRecipe.title = textFieldTitle.text!
+            self.save(newRecipe : addRecipe)
         }
-        
+
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Recipe Title"
-            textField = alertTextField
+            textFieldTitle = alertTextField
         }
-        
+                
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
+    }    //======end of function addNewRecipe========
 
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //MARK - check path for table
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-       // recipeTableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCustomCell")
+       recipeTableView.register(UINib(nibName: "CustomCellTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeCustomCell")
         
-        loadRecipe()
+       loadRecipe()
     }
 
     //MARK : Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return recipeList?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeListCell", for: indexPath)
+       let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCustomCell", for: indexPath) as! CustomCellTableViewCell
         
-        let recipe =  itemArray[indexPath.row]
-       //cell.recipeTitle.text? = recipe.title
-        cell.textLabel?.text = recipe.title
+        let recipe =  recipeList?[indexPath.row]
+        cell.recipeTitle.text = recipe?.title ?? "No Recipe Added"
+//        cell.textLabel?.text = recipeList?[indexPath.row].title ?? "No Recipe Added"
+        //cell.recipeImage.image = recipe.image
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToHowToMake", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! DetailRecipeTableViewController
+        if let indexPath = tableView.indexPathForSelectedRow{
+            destinationVC.selectedRecipe = recipeList?[indexPath.row]
+        }
+//        let indexPath = tableView.indexPathForSelectedRow {
+//            destinationVC.selectedRecipe = recipeList?[indexPath.row]
+//        }
+    }
+    
+    
     //MARK - Data manipuation
     
-    func saveRecipe() {
+    func save(newRecipe : Recipe) {
         do {
-            try context.save()
+            try realm.write {
+                realm.add(newRecipe)
+            }
         }catch{
             print("Print context saving Eror : \(error)")
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     func loadRecipe() {
-        let request : NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        do {
-            itemArray = try context.fetch(request)
-            print("This is the --> \(itemArray)")
-        } catch {
-            print("Error fetch data : \(error)")
-        }
+        recipeList = realm.objects(Recipe.self)
+        tableView.reloadData()
+        
     }
 }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D42" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Ingredients" representedClassName="Ingredients" syncable="YES" codeGenerationType="class">
+        <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="linkIngredients" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <entity name="Methods" representedClassName="Methods" syncable="YES" codeGenerationType="class">
+        <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="linkMethods" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="ingredients" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methods" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="linkIngredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredients" inverseName="parentRecipe" inverseEntity="Ingredients" syncable="YES"/>
+        <relationship name="linkMethods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Methods" inverseName="parentRecipe" inverseEntity="Methods" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Ingredients" positionX="-339.65625" positionY="11.92578125" width="128" height="73"/>
+        <element name="Methods" positionX="155.09375" positionY="11.44140625" width="128" height="73"/>
+    </elements>
+</model>

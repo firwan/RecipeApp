@@ -27,7 +27,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9v-tG-iwe">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9v-tG-iwe">
                         <rect key="frame" x="0.0" y="47" width="383" height="177"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -63,15 +63,30 @@
                         <rect key="frame" x="266" y="310" width="101" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Add Ingredient"/>
+                        <connections>
+                            <action selector="butonPressAddIngredients:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="smP-5y-SGp"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgH-4X-ZPe">
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgH-4X-ZPe">
                         <rect key="frame" x="282" y="416" width="85" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Add Method"/>
+                        <connections>
+                            <action selector="buttonPressAddMethods:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OM7-Uh-cJ9"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="recipeImage" destination="B9v-tG-iwe" id="KUb-hw-bWS"/>
+                <outlet property="recipeIngredients" destination="E8i-G1-e57" id="vKk-Jd-DIw"/>
+                <outlet property="recipeMethods" destination="6De-XS-PM8" id="3ZV-ij-S4b"/>
+                <outlet property="recipeTitle" destination="TIE-Nn-cTT" id="h5M-9R-yRg"/>
+            </connections>
             <point key="canvasLocation" x="296.80000000000001" y="121.88905547226388"/>
         </tableViewCell>
     </objects>
