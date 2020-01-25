@@ -23,6 +23,7 @@ class DetailRecipeTableViewController: UITableViewController {
     var selectedRecipe : Recipe? {
         didSet{
             loadData()
+            print("@@@Load has executed@@@")
         }
     }
     
@@ -63,19 +64,21 @@ class DetailRecipeTableViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add ingredient", style: .default) { (action) in
             
-            let addIngredient = IngredientsMethods()
-            addIngredient.ingredients = textField.text!
-            addIngredient.flag = "I"
-            do {
-                try self.realm.write {
-                    self.realm.add(addIngredient)
+            if let addIngredient = self.selectedRecipe{
+                do {
+                    try self.realm.write {
+                        let newIngredient = IngredientsMethods()
+                        newIngredient.ingredients = textField.text!
+                        newIngredient.flag = "I"
+                        addIngredient.linkIngredientsMethods.append(newIngredient)
+                    }
+                }catch {
+                    print("Error saving data to ingredient : \(error)")
                 }
-            }catch {
-                print("Error saving data to ingredient : \(error)")
             }
-            
+            self.tableView.reloadData()
         }
-        
+
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "1 cup of Milk"
             textField = alertTextField
@@ -92,27 +95,30 @@ class DetailRecipeTableViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add method", style: .default) { (action) in
             
-            let addMethod = IngredientsMethods()
-            addMethod.method = textField.text!
-            addMethod.flag = "M"
-            do {
-                try self.realm.write {
-                    self.realm.add(addMethod)
+            if let addMethod = self.selectedRecipe{
+                do {
+                    try self.realm.write {
+                        let newMethod = IngredientsMethods()
+                        newMethod.method = textField.text!
+                        newMethod.flag = "M"
+                        addMethod.linkIngredientsMethods.append(newMethod)
+                    }
+                }catch {
+                    print("Error saving data to method : \(error)")
                 }
-            }catch {
-                print("Error saving data to ingredient : \(error)")
             }
-            
+            self.tableView.reloadData()
         }
         
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "1 cup of Milk"
+            alertTextField.placeholder = "Heat the oil on a cooking pan"
             textField = alertTextField
         }
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
     @IBAction func addIngredientMethods(_ sender: UIBarButtonItem) {
     }
     

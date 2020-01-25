@@ -17,6 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DkD-fB-ncl">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="➕ Ingredients" id="brl-SE-HTg">
+                                    <connections>
+                                        <action selector="buttonPressAddIngredients:" destination="MMi-jp-4Pd" id="4GU-cG-RVG"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="➕ Methods" id="H9E-h0-20D">
+                                    <connections>
+                                        <action selector="buttonPressAddMethods:" destination="MMi-jp-4Pd" id="2Ej-T4-G76"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailRecipe" id="IDA-X5-ir4">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -32,18 +48,7 @@
                             <outlet property="delegate" destination="MMi-jp-4Pd" id="hMn-xJ-F29"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="➕ Ingredients" id="brl-SE-HTg">
-                            <connections>
-                                <action selector="buttonPressAddIngredients:" destination="MMi-jp-4Pd" id="4GU-cG-RVG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="➕ Methods" id="H9E-h0-20D">
-                            <connections>
-                                <action selector="buttonPressAddMethods:" destination="MMi-jp-4Pd" id="2Ej-T4-G76"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="How to make it" id="LXA-Lh-qz9">
                         <barButtonItem key="backBarButtonItem" title="Recipe" id="a6O-po-zGd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mQd-WO-vKf">
